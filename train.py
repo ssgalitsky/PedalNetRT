@@ -11,14 +11,14 @@ def main(args):
         # The following line is for use with the Colab notebook when training on TPUs.
         # Comment out the above line and uncomment the below line to use.
         
-         max_epochs=args.max_epochs, tpu_cores=args.tpu_cores, gpus=args.gpus, row_log_interval=100
+         max_epochs=args.max_epochs, tpu_cores=args.tpu_cores, row_log_interval=100
     )
     trainer.fit(model)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--num_channels", type=int, default=16)
+    parser.add_argument("--num_channels", type=int, default=5)
     parser.add_argument("--dilation_depth", type=int, default=10)
     parser.add_argument("--num_repeat", type=int, default=1)
     
