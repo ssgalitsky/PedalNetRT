@@ -1,6 +1,19 @@
 import pytorch_lightning as pl
 import argparse
 
+from pytorch_lightning.callbacks import ModelCheckpoint
+# https://pytorch-lightning.readthedocs.io/en/0.9.0/api/pytorch_lightning.callbacks.model_checkpoint.html#model-checkpointing
+checkpoint_callback = ModelCheckpoint(
+    filepath=os.getcwd(),
+    save_last=True,
+    save_top_k=True,
+    verbose=True,
+    monitor='val_loss',
+    mode='min',
+    prefix=''
+)
+
+
 from model import PedalNet
 
 
@@ -10,8 +23,7 @@ def main(args):
         #max_epochs=args.max_epochs, gpus=args.gpus, row_log_interval=100
         # The following line is for use with the Colab notebook when training on TPUs.
         # Comment out the above line and uncomment the below line to use.
-        
-         max_epochs=args.max_epochs, tpu_cores=args.tpu_cores, row_log_interval=100
+        max_epochs=args.max_epochs, tpu_cores=args.tpu_cores, row_log_interval=100, checkpoint_callback=ModelCheckpoint()
     )
     trainer.fit(model)
 
