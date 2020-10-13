@@ -7,13 +7,14 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 checkpoint_callback = ModelCheckpoint(
     filepath=os.getcwd(),
     save_last=True,
-    save_top_k=True,
     verbose=True,
     monitor='val_loss',
     mode='min',
     prefix=''
 )
 
+
+#    save_top_k=True,
 
 from model import PedalNet
 
