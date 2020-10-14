@@ -4,14 +4,11 @@ from model import PedalNet
 
 from pytorch_lightning.callbacks import ModelCheckpoint
 
-# default used by the Trainer
 checkpoint_callback = ModelCheckpoint(
-    filepath=os.getcwd(),
     save_top_k=5,
-    verbose=True,
     monitor='val_loss',
     mode='min',
-    period=50
+    period=100
 )
 
 def main(args):
